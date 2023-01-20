@@ -31,6 +31,15 @@ public class Main {
                         case 2:
                             Menu.printOnlyThisClass(animalFarm);
                             break;
+                        case 3:
+                            Menu.Comands();
+                            break;
+                        case 4:
+                            Menu.newComand();
+                            break;
+                        case 5:
+                            Menu.newAnimal();
+                            break;
                     }
                 }
             }

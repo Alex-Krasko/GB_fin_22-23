@@ -7,4 +7,8 @@ public class Cat extends Pet {
         super(id, name, birthdate, thoroughbred);
 
     }
+
+    public void Comands(){
+        System.out.println("Выполняемые команды животного");
+    }
 }

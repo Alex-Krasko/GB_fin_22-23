@@ -4,13 +4,13 @@ import Java.Beasts.Beast;
 import Java.Pets.Pet;
 
 public class Farm<T> {
-    private List<E> animals;
+    private List<A> animals;
 
     public Farm() {
-        animals = new ArrayList<>();
+        animals = new ArrayList();
     }
 
-    public boolean adopt(T animal) {
+    public boolean adopt(Animal animal) {
         return animals.add(animal);
     }
 
@@ -26,7 +26,7 @@ public class Farm<T> {
         return new Farm<A>();
     }
 
-    public static <A> boolean adopt(Farm<A> farm, A animal) {
+    public static <A> boolean adopt(Farm<A> farm, Animal animal) {
         return farm.adopt(animal);
     }
 
@@ -42,7 +42,7 @@ public class Farm<T> {
     }
 
     public void printCollection(Class<?> choiseClass){
-        for (T animal :
+        for (Animal animal :
                 animals) {
             if (choiseClass.isInstance(animal)) {
                 System.out.println(animal.toString());
@@ -51,7 +51,7 @@ public class Farm<T> {
     }
 
     public void printAnimals() {
-        for (E animal :
+        for (Animal animal :
                 animals) {
             System.out.println(animal.toString());
         }

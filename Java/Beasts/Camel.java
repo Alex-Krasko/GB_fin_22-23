@@ -6,4 +6,7 @@ public class Camel extends Beast{
         super(id, name, birthdate, loadCapacity);
     }
 
+    public void Comands(){
+        System.out.println("Выполняемые команды животного");
+    }
 }
