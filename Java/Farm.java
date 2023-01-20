@@ -4,7 +4,7 @@ import Java.Beasts.Beast;
 import Java.Pets.Pet;
 
 public class Farm<T> {
-    private static List<E> animals;
+    private List<E> animals;
 
     public Farm() {
         animals = new ArrayList<>();
@@ -50,8 +50,8 @@ public class Farm<T> {
         }
     }
 
-    public static void printAnimals() {
-        for (Animal animal :
+    public void printAnimals() {
+        for (E animal :
                 animals) {
             System.out.println(animal.toString());
         }
