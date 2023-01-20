@@ -73,3 +73,51 @@ VALUES(1016,'Pinky', 'trot', date'2018-09-01'), (1017, 'Genry', 'come up', date'
 
 INSERT INTO Ослы (id, Имя, Команды, ДатаРождения)
 VALUES(1018,'Greak', 'run', date'2020-11-09'), (1019, 'Atry', 'go away', date'2017-12-29'), (1020, 'Mot', 'come here, go', date'2021-01-01');
+
+# Удалив из таблицы верблюдов, т.к. верблюдов решили перевезти в другой питомник на зимовку. Объединить таблицы лошади, и ослы в одну таблицу.
+TRUNCATE TABLE Верблюды;
+
+SELECT * FROM Лошади 
+UNION SELECT * FROM Ослы
+AS `Вьючные животные`;
+
+# Создать новую таблицу “молодые животные” в которую попадут все животные старше 1 года, 
+# но младше 3 лет и в отдельном столбце с точностью до месяца подсчитать возраст животных в новой таблице
+
+CREATE TABLE `Молодые животные`
+SELECT id, Имя, Команды, ДатаРождения, 
+(YEAR(CURRENT_DATE)-YEAR(ДатаРождения)) - (RIGHT(CURRENT_DATE,5)<RIGHT(ДатаРождения,5)) AS Возраст
+FROM Собаки
+WHERE (YEAR(CURRENT_DATE)-YEAR(ДатаРождения)) - (RIGHT(CURRENT_DATE,5)<RIGHT(ДатаРождения,5)) < 3 
+AND (YEAR(CURRENT_DATE)-YEAR(ДатаРождения)) - (RIGHT(CURRENT_DATE,5)<RIGHT(ДатаРождения,5)) > 1
+UNION
+SELECT id, Имя, Команды, ДатаРождения, 
+(YEAR(CURRENT_DATE)-YEAR(ДатаРождения)) - (RIGHT(CURRENT_DATE,5)<RIGHT(ДатаРождения,5)) AS Возраст
+FROM Кошки
+WHERE (YEAR(CURRENT_DATE)-YEAR(ДатаРождения)) - (RIGHT(CURRENT_DATE,5)<RIGHT(ДатаРождения,5)) < 3 
+AND (YEAR(CURRENT_DATE)-YEAR(ДатаРождения)) - (RIGHT(CURRENT_DATE,5)<RIGHT(ДатаРождения,5)) > 1
+UNION
+SELECT id, Имя, Команды, ДатаРождения, 
+(YEAR(CURRENT_DATE)-YEAR(ДатаРождения)) - (RIGHT(CURRENT_DATE,5)<RIGHT(ДатаРождения,5)) AS Возраст
+FROM Хомяки
+WHERE (YEAR(CURRENT_DATE)-YEAR(ДатаРождения)) - (RIGHT(CURRENT_DATE,5)<RIGHT(ДатаРождения,5)) < 3 
+AND (YEAR(CURRENT_DATE)-YEAR(ДатаРождения)) - (RIGHT(CURRENT_DATE,5)<RIGHT(ДатаРождения,5)) > 1
+UNION
+SELECT id, Имя, Команды, ДатаРождения, 
+(YEAR(CURRENT_DATE)-YEAR(ДатаРождения)) - (RIGHT(CURRENT_DATE,5)<RIGHT(ДатаРождения,5)) AS Возраст
+FROM Лошади
+WHERE (YEAR(CURRENT_DATE)-YEAR(ДатаРождения)) - (RIGHT(CURRENT_DATE,5)<RIGHT(ДатаРождения,5)) < 3 
+AND (YEAR(CURRENT_DATE)-YEAR(ДатаРождения)) - (RIGHT(CURRENT_DATE,5)<RIGHT(ДатаРождения,5)) > 1
+UNION
+SELECT id, Имя, Команды, ДатаРождения, 
+(YEAR(CURRENT_DATE)-YEAR(ДатаРождения)) - (RIGHT(CURRENT_DATE,5)<RIGHT(ДатаРождения,5)) AS Возраст
+FROM Верблюды
+WHERE (YEAR(CURRENT_DATE)-YEAR(ДатаРождения)) - (RIGHT(CURRENT_DATE,5)<RIGHT(ДатаРождения,5)) < 3 
+AND (YEAR(CURRENT_DATE)-YEAR(ДатаРождения)) - (RIGHT(CURRENT_DATE,5)<RIGHT(ДатаРождения,5)) > 1
+UNION
+SELECT id, Имя, Команды, ДатаРождения, 
+(YEAR(CURRENT_DATE)-YEAR(ДатаРождения)) - (RIGHT(CURRENT_DATE,5)<RIGHT(ДатаРождения,5)) AS Возраст
+FROM Ослы
+WHERE (YEAR(CURRENT_DATE)-YEAR(ДатаРождения)) - (RIGHT(CURRENT_DATE,5)<RIGHT(ДатаРождения,5)) < 3 
+AND (YEAR(CURRENT_DATE)-YEAR(ДатаРождения)) - (RIGHT(CURRENT_DATE,5)<RIGHT(ДатаРождения,5)) > 1
+ORDER BY id;
